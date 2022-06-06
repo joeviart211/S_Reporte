@@ -25,9 +25,15 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/reportes', function () {
+        return view('reportes');
+    })->name('reportes');
+    Route::get('/detalles/{id}', function ($id) {
+        return view('detail');
+    })->name('detail');
+    Route::get('/creportes', function () {
+        return view('creportes');
+    })->name('creportes');
 
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/reportes', function () {
-    return view('reportes');
-})->name('reportes');

@@ -40,9 +40,7 @@
 
         </th>
         <th>
-            <button class="btn btn-blue">
-                detalles {{$reporte->id}}
-              </button>
+            <a href="detalles/{{$reporte->id}}" target="_blank">a</a>
         </th>
         <th>
             <button class="btn btn-blue">
