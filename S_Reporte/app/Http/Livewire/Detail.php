@@ -11,8 +11,9 @@ class Detail extends Component
     {
         $actual_link = "$_SERVER[REQUEST_URI]";
         $ident=substr($actual_link, 10);
-        $detalles= Detalle::where('id',$ident)->get();
 
+        $detalles= Detalle::where('id',$ident)->get();
+        //dd($detalles);
 
         return view('livewire.Detail',[
             'detalles'=>$detalles,

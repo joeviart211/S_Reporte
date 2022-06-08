@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\DetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,13 @@ Route::middleware([
     Route::get('/creportes', function () {
         return view('creportes');
     })->name('creportes');
+    Route::get('/cdetalles/{id}', function ($id) {
+        return view('cdetalles');
+    })->name('cdetalles');
+
+
+    Route::post('store-report', [ReportController::class, 'store']);
+    Route::post('store-detail', [DetailController::class, 'store']);
 
 });
 

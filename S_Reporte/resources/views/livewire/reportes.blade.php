@@ -51,9 +51,9 @@
                 borrar {{$reporte->id}}
               </button>
         </th>
-
-        @endforeach
     </tr>
+        @endforeach
+
 
 
     </tbody>
