@@ -22,22 +22,13 @@
     </tr>
   </thead>
   <tbody>
-  @foreach($reports as $report => $value)
-  <tr>
 
-      <td>{{$value->Fuente}}</td>
-      <td> {{$value->Fecha}}</td>
-      <td>{{$value->N_Situación}}</td>
-      <td>{{$value->TRANSVERSALIDAD}}</td>
-      <td><a href="#">...</a></td>
 
-    </tr>
-    @endforeach
 
 
 
   </tbody>
 </table>
-    
-{{$reports->links()}}
+
+
 </div>

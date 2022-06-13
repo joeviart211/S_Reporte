@@ -24,10 +24,10 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/transversalidad', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/reportes', function () {
+    Route::get('/dashboard', function () {
         return view('reportes');
     })->name('reportes');
     Route::get('/detalles/{id}', function ($id) {

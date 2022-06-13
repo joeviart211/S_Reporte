@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 
 use Livewire\Component;
 use  App\Models\Reporte;
+use App\Models\Transversalidad;
 
 class CReportes extends Component
 {
     public function render(Request $request)
     {
-        
-        return view('livewire.c-reportes',[
+
+        $transversalidades= Transversalidad::all();
+        return view('livewire.c-reportes',['transversalidades'=> $transversalidades,
 
         ]);
     }
