@@ -14,10 +14,17 @@ class ReportController extends Controller
 
         $reporte = new Reporte;
         $reporte->fuente = $request->fuente;
-        $reporte->user_id = auth()->user()->id;;
+        $reporte->user_id = auth()->user()->id;
         $reporte->fecha=$request->fecha;
         $reporte->n_situacion=$request->n_situacion;
         $reporte->transversalidad=$request->transversalidad;
+        $reporte->metadato=$request->metadato;
+        $reporte->evento=$request->metadato;
+        $reporte->tema_selecto=$request->tema_selecto;
+        $reporte->reseña=$request->reseña;
+        $reporte->proceso_validacion=$request->proceso_validacion;
+
+
 
         $reporte->save();
         $id=$reporte->id;

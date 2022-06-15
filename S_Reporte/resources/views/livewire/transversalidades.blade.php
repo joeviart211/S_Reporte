@@ -5,9 +5,11 @@
           <th scope="col">Id</th>
 
           <th scope="col">Transversalidad</th>
+
+
         </tr>
 
-    </thead>
+    </thead>    
         <tbody>
         <tr>
         @foreach($transversalidades as $transversalidad)
@@ -16,6 +18,9 @@
         </th>
         <th>
             {{$transversalidad -> nombre}}
+        </th>
+        <th>
+            <a href="#">Borrar</a>
         </th>
         </tr>
         @endforeach

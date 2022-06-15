@@ -13,11 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transv', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-
-        });
+        
     }
 
     /**
@@ -27,8 +23,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists ('transv', function (Blueprint $table) {
-
-        });
+       
     }
 };

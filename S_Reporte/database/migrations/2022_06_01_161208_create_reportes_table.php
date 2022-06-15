@@ -19,15 +19,15 @@ return new class extends Migration
             $table->string('fuente');
             $table->date('fecha');
             $table->string('n_situacion');
-            $table->unsignedBigInteger('transversalidad');
-            $table->boolean('metadato');
-            $table->boolean('evento');
-            $table->boolean('tema_selecto');
+            $table->string('transversalidad');
+            $table->boolean('metadato')->nullable()->default(0);
+            $table->boolean('evento')->nullable()->default(0);
+            $table->boolean('tema_selecto')->nullable()->default(0);
             $table->string('reseña');
             $table->string('proceso_validacion');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('transversalidad')->references('id')->on('transversalidad');
+            $table->foreign('transversalidad')->references('nombre')->on('transversalidad');
 
         });
     }

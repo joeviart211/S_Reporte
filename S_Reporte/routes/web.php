@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\DetailController;
-
+use App\Http\Controllers\TransversalidadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,10 +39,15 @@ Route::middleware([
     Route::get('/cdetalles/{id}', function ($id) {
         return view('cdetalles');
     })->name('cdetalles');
+    Route::get('/ctransver', function () {
+        return view('ctransver');
+    })->name('ctransver');
 
-
+    Route::post('store-transv', [TransversalidadController::class,'store']);
     Route::post('store-report', [ReportController::class, 'store']);
     Route::post('store-detail', [DetailController::class, 'store']);
+
+
 
 });
 
