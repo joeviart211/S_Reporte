@@ -2,7 +2,7 @@
 
 
 
-    <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('store-detail')}}">
+    <form name="add-blog-post-form" id="add-blog-post-form" method="post" enctype="multipart/form-data"action="{{url('store-detail')}}">
         {{ csrf_field() }}
         <div>
         <label for="exampleInputEmail1">Direccion General</label>
@@ -60,5 +60,11 @@
         <input type="file" id="reporte" name="reporte" class="form-control" required="true">
         </div>
         <br>
+        @error('reporte')
+
+
+        {{-- cachar error de validación --}}
+
+        @enderror
         <button type="submit" class="btn btn-primary">Submit</button>
 </div>

@@ -13,7 +13,7 @@ class Detail extends Component
         $ident=substr($actual_link, 10);
 
         $detalles= Detalle::where('id',$ident)->get();
-        //dd($detalles);
+        
 
         return view('livewire.Detail',[
             'detalles'=>$detalles,

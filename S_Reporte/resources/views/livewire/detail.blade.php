@@ -3,17 +3,19 @@
  <h1>Dirección General </h1>
  <b>{{$detalle->direccionG}}</b>
  <h1>Direcciones web generales </h1>
- <b>{{$detalle->direcciongWebG}}</b>
+ <b>{{$detalle->direccionesWebG}}</b>
  <h1>Documento general </h1>
- <a href="{$detalle->documentoDG}}">Error pendiente</a>
- <h1>Direcciones Diagnostico </h1>
+
+ {{-- {{ url('switchinfo/'.$info->prisw.'/'.$info->secsw.'/') }} --}}
+ <a href={{url("/download/documentoDG/{$detalle->id}")}}>{{$detalle->DDGname}}</a>
+ {{-- <h1>Direcciones Diagnostico </h1>
  <b>{{$detalle->direcciones_diagnostico}}</b>
  <h1>Direcciones  Web diagnostico </h1>
  <b>{{$detalle->direccionesWebD}}  </b>
  <h1>Documento diagnostico </h1>
  <b>{{$detalle->docuemnto_dd}}</b>
  <h1>Direcciones Proyecto</h1>
- <b>{{$detalle->direcciones_proyecto}}</b>
+ <b>{{$detalle->direccion_proyecto}}</b>
  <h1>Direcciones web Proyecto </h1>
  <b>{{$detalle->documento_DP}}</b>
  <h1>Direcciones planeacion </h1>
@@ -25,7 +27,7 @@
  <h1>Observaciones </h1>
  <b>{{$detalle->tipo}}</b>
  <h1>Reporte </h1>
- <b>{{$detalle->reporte}}</b>
+ <b>{{$detalle->reporte}}</b> --}}
 
 
  @endforeach

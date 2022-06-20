@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\TransversalidadController;
+use App\Http\Controllers\DownloadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +40,7 @@ Route::middleware([
     Route::get('/cdetalles/{id}', function ($id) {
         return view('cdetalles');
     })->name('cdetalles');
+
     Route::get('/ctransver', function () {
         return view('ctransver');
     })->name('ctransver');
@@ -46,6 +48,8 @@ Route::middleware([
     Route::post('store-transv', [TransversalidadController::class,'store']);
     Route::post('store-report', [ReportController::class, 'store']);
     Route::post('store-detail', [DetailController::class, 'store']);
+
+    Route::get('/download/{doc}/{id}',[DownloadController::class,'download']);
 
 
 
