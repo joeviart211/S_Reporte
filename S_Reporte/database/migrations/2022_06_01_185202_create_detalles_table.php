@@ -29,7 +29,7 @@ return new class extends Migration
             $table->text('direccion_web_P');
             $table->binary('documento_DP');
             $table->text('DDPname');
-            $table->text('DDPGmime');
+            $table->text('DDPmime');
             $table->text('direccion_planeacion');
             $table->text('direccion_web_Pl');
             $table->binary('documento_P');

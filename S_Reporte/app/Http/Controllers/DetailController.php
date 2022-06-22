@@ -25,9 +25,20 @@ class DetailController extends Controller
         // $N = $request->file('')->getClientOriginalName();
 
         $Departamento=$request->user()->currentTeam->id;
-
+        // $detail->documento_dd=$pathDD;
         $nameDG = $request->file('documentoDG')->getClientOriginalName();
         $pathDG = $request->file('documentoDG')->store('public');
+        $nameDD=$request->file('documento_dd')->getClientOriginalName();
+        $pathDD=$request->file('documento_dd')->store('public');
+        $nameDP=$request->file('documento_DP')->getClientOriginalName();
+        $pathDP=$request->file('documento_DP')->store('public');
+        $pathP=$request->file('documento_P')->store('public');
+        $nameP=$request->file('documento_P')->getClientOriginalName();
+        $Rname=$request->file('reporte')->getClientOriginalName();
+        $Rpath=$request->file('reporte')->store('public');
+
+
+
 
 
 
@@ -35,33 +46,33 @@ class DetailController extends Controller
         $detail->id =$request->id;
         $detail->direccionG=$request->direccionG;
         $detail->direccionesWebG=$request->direccionesWebG;
-
         $detail->documentoDG=$pathDG;
         $detail->DDGmime=$_FILES['documentoDG']['type'];
         $detail->DDGname=$nameDG;
-       // $detail->documentoDG=file_get_contents($_FILES['documentoDG']['tmp_name']);
+
         $detail->direcciones_diagnostico=$request->direcciones_diagnostico;
         $detail->direccionesWebD=$request->direccionesWebD;
         $detail->direccion_proyecto=$request->direccion_proyecto;
         $detail->direccion_web_P=$request->direccion_web_P;
-        // $detail->documento_dd=$request->documento_dd;
-        $detail->documento_dd=$request->file('documento_dd');
+
+        $detail->documento_dd=$pathDD;
         $detail->DDDmime=$_FILES['documento_dd']['type'];
-        $detail->DDDname=$_FILES['documento_dd']['name'];
-        // $detail->documento_DP=$request->documento_DP;
-        $detail->documento_DP=$request->file('documento_DP');
-        $detail->DDPGmime=$_FILES['documento_DP']['type'];
-        $detail->DDPname=$_FILES['documento_DP']['name'];
+        $detail->DDDname=$nameDD;
+
+
+        $detail->documento_DP=$pathDP;
+        $detail->DDPmime=$_FILES['documento_DP']['type'];
+        $detail->DDPname=$nameDP;
         $detail->direccion_planeacion=$request->direccion_planeacion;
         $detail->direccion_web_Pl=$request->direccion_web_Pl;
-        $detail->documento_P=$request->documento_P;
-        $detail->DPmime=$_FILES['documentoDG']['type'];
-        $detail->DPname=$_FILES['documentoDG']['name'];
+        $detail->documento_P=$pathP;
+        $detail->DPmime=$_FILES['documento_P']['type'];
+        $detail->DPname=$nameP;
         $detail->observaciones=$request->observaciones;
         $detail->tipo=$request->tipo;
-        $detail->reporte=$request->reporte;
-        $detail->Rmime=$_FILES['documentoDG']['type'];
-        $detail->Rname=$_FILES['documentoDG']['name'];
+        $detail->reporte=$Rpath;
+        $detail->Rmime=$_FILES['reporte']['type'];
+        $detail->Rname=$Rname;
 
         // dd($detail);
 
