@@ -2,26 +2,35 @@
     <table class="table">
     <thead>
         <tr>
-          <th scope="col">Id</th>
+
 
           <th scope="col">Transversalidad</th>
+
+          <th scope="col"> Editar</th>
+
+          <th scope="col">Borrar</th>
 
 
         </tr>
 
-    </thead>    
+    </thead>
         <tbody>
         <tr>
         @foreach($transversalidades as $transversalidad)
-        <th>
-            {{ $transversalidad -> id }}
-        </th>
+
         <th>
             {{$transversalidad -> nombre}}
         </th>
+
+        <th><a href="{{ route('transversalidad.update',$transversalidad->id)}}" class="btn btn-primary">Edit</a>
+        {{-- cambiar a iconos --}}
         <th>
-            <a href="#">Borrar</a>
-        </th>
+            <form action="{{ route('transversalidad.destroy', $transversalidad->id)}}" method="post">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger" type="submit">Borrar</button>
+              </form>
+            </th>
         </tr>
         @endforeach
         </tbody>

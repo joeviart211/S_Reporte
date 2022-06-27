@@ -48,6 +48,17 @@ Route::middleware([
     Route::post('store-transv', [TransversalidadController::class,'store']);
     Route::post('store-report', [ReportController::class, 'store']);
     Route::post('store-detail', [DetailController::class, 'store']);
+    Route::get('update-transv/{id}',[TransversalidadController::class,'update'])->name('transversalidad.update');
+    Route::patch('edit-transv/{id}',[TransversalidadController::class,'edit'])->name('transversalidad.edit');
+
+
+    Route::get('update-detalle/{id}',[DetailController::class,'update'])->name('detalle.update');
+    Route::patch('edit-detalle/{id}',[DetailController::class,'edit'])->name('detalle.edit');
+
+    Route::get('update-reporte/{id}',[ReportController::class,'update'])->name('report.update');
+    Route::patch('edit-reporte/{id}',[ReportController::class,'edit'])->name('report.edit');
+    Route::delete('delete-transv/{id}',[TransversalidadController::class,'destroy'])->name('transversalidad.destroy');
+    Route::delete('delete-reports/{id}',[ReportController::class,'destroy'])->name('reporte.destroy');
 
     Route::get('/download/{doc}/{id}',[DownloadController::class,'download']);
 

@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transversalidad', function (Blueprint $table) {
-            $table->string('nombre')->primary();
+            $table->string('nombre')->primary()->nullable();
             $table->bigInteger('id')->from(0);
-            
+
             $table->timestamps();
         });
     }

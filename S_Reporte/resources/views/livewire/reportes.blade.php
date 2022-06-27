@@ -43,13 +43,14 @@
             <a href="detalles/{{$reporte->id}}" target="_blank">a</a>
         </th>
         <th>
-            <button class="btn btn-blue">
-                editar {{$reporte->id}}
-              </button>
+            {{-- <a href="{{ route('transversalidad.update',$transversalidad->id)}}" class="btn btn-primary">Edit</a> --}}
+            <a href="{{ route('report.update',$reporte->id)}}"">Editar</a>
               <br>
-              <button class="btn btn-blue">
-                borrar {{$reporte->id}}
-              </button>
+              <form action="{{ route('reporte.destroy', $reporte->id)}}" method="post">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger" type="submit">Borrar</button>
+              </form>
         </th>
     </tr>
         @endforeach

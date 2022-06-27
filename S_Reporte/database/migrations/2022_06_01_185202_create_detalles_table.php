@@ -42,7 +42,7 @@ return new class extends Migration
             $table->text('Rmime');
 
             $table->timestamps();
-            $table->foreign('id')->references('id')->on('reportes');
+            $table->foreign('id')->references('id')->on('reportes')->cascadeOnUpdate()->cascadeOnDelete();
 
         });
     }
