@@ -27,10 +27,10 @@ Route::middleware([
 ])->group(function () {
     Route::get('/transversalidad', function () {
         return view('dashboard');
-    })->name('dashboard');
+    })->name('reportes');
     Route::get('/dashboard', function () {
         return view('reportes');
-    })->name('reportes');
+    })->name('dashboard');
     Route::get('/detalles/{id}', function ($id) {
         return view('detail');
     })->name('detail');
@@ -61,6 +61,7 @@ Route::middleware([
     Route::delete('delete-reports/{id}',[ReportController::class,'destroy'])->name('reporte.destroy');
 
     Route::get('/download/{doc}/{id}',[DownloadController::class,'download']);
+    Route::get('search',[ReportController::class,'search'])->name('reporte.search');
 
 
 

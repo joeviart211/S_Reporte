@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <div>
     <table class="table">
     <thead>
@@ -6,9 +7,9 @@
 
           <th scope="col">Transversalidad</th>
 
-          <th scope="col"> Editar</th>
+          <th scope="col"> </th>
 
-          <th scope="col">Borrar</th>
+          <th scope="col"></th>
 
 
         </tr>
@@ -22,7 +23,7 @@
             {{$transversalidad -> nombre}}
         </th>
 
-        <th><a href="{{ route('transversalidad.update',$transversalidad->id)}}" class="btn btn-primary">Edit</a>
+        <th><a href="{{ route('transversalidad.update',$transversalidad->id)}}" class="btn btn-primary">Editar</a>
         {{-- cambiar a iconos --}}
         <th>
             <form action="{{ route('transversalidad.destroy', $transversalidad->id)}}" method="post">

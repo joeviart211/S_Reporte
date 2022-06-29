@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use  App\Models\Reporte;
 use  App\Models\Transversalidad;
+use Illuminate\Support\Facades\DB;
+
 
 use Illuminate\Http\Request;
 
@@ -63,6 +65,32 @@ class ReportController extends Controller
 
         return redirect()->route('reportes',);
     }
+    public function search(Request $request){
+        // $request->filter , $request->search $request->tipo
+        if($request->tipo == 'all'){
+        $searches = DB::table('reportes')->where($request->filter, $request->search)->get();
+        }else{
+            if($request->tipo=='metadato'){
+                $searches = DB::table('reportes')->where($request->filter, $request->search)
+                                                    ->where('metadato',1)->get();
+            }
+            if($request->tipo=='evento'){
+                $searches = DB::table('reportes')->where($request->filter, $request->search)
+                ->where('evento',1)->get();
+
+            }
+            if($request->tipo=='tema_selecto'){
+                $searches = DB::table('reportes')->where($request->filter, $request->search)
+                ->where('tema_selecto',1)->get();
+
+            }
+        }
+
+        // dd($request->filter, $request->search,$searches,$request->tipo);
+        return view('searches',compact('searches'));
+
+    }
+
 
 
 

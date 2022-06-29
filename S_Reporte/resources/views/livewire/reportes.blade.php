@@ -1,10 +1,34 @@
 <div class="input-group">
-    <input type="search" class="form-control rounded" placeholder="Buscar" aria-label="Search" aria-describedby="search-addon" />
-    <button type="button" class="btn btn-outline-primary">Buscar</button>
-  </div>
+<form action="{{ route('reporte.search', )}}" method="get">
 
 
-  <div>
+
+
+<label for="filtro">Filtro</label>
+<select name="filter" id="filter" required="true">
+	<option value="">Escoge una opción </option>
+	<option value="fuente">Fuente</option>
+	<option value="fecha">Fecha</option>
+	<option value="n_situacion">Nombre de situación</option>
+    <option value="transversalidad">Transversalidad</option>
+</select>
+
+<label for="tipo">Tipo</label>
+<select name="tipo" id="tipo">
+	<option value="all">Todas</option>
+	<option value="metadato">Metadato</option>
+	<option value="tema_selecto">Tema Selecto</option>
+	<option value="evento">Evento</option>
+
+</select>
+<input type="text" name="search" id="search" class="form-control rounded" placeholder="Buscar" aria-label="Search" aria-describedby="search-addon" />
+<button type="submit" class="btn btn-outline-primary">Buscar</button>
+</form>
+
+</div>
+
+
+<div>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
