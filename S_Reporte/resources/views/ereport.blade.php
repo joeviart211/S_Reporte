@@ -11,9 +11,9 @@
                 <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{route('report.edit',$reporte->id)}}">
                     @method('PATCH')
                     @csrf
-        <label for="exampleInputEmail1">Fuente</label>
+        <label for="InputData1">Fuente</label>
         <input type="text" id="fuente" name="fuente" class="form-control" required="true" value="{{$reporte->fuente}}">
-        <label for="exampleInputEmail1">Fecha</label>
+        <label for="InputData1">Fecha</label>
         <input type="date" id="fecha" name="fecha" class="form-control" required="true" value="{{$reporte->fecha}}">
         @if($reporte->tema_selecto==1)
 
@@ -37,11 +37,11 @@
 
         <br><br>
         <div>
-        <label for="exampleInputEmail1">Nombre de la situación</label>
+        <label for="InputData1">Nombre de la situación</label>
         <textarea id="n_situacion" name="n_situacion" rows="5" cols="30" required= "true" value="aaaaa"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md"  >{{$reporte->n_situacion}}</textarea>
         </div>
         <br>
-        <label for="exampleInputEmail1">Transversalidad</label>
+        <label for="InputData1">Transversalidad</label>
         <select class="form-control" name="transversalidad" required="true">
 
         @foreach($transversalidades as $transversalidad => $value )
@@ -50,10 +50,10 @@
         @endforeach
     </select>
     <br>
-    <label for="exampleInputEmail1">Reseña</label>
+    <label for="InputData1">Reseña</label>
 <textarea id="reseña" name="reseña" rows="5" cols="60" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" >{{$reporte->reseña}}</textarea>
 <br>
-<label for="exampleInputEmail1">Proceso de validación</label>
+<label for="InputData1">Proceso de validación</label>
 <input type="text" id="proceso_validacion" name="proceso_validacion" class="form-control" required="true" value="{{$reporte->proceso_validacion}}">
 
 

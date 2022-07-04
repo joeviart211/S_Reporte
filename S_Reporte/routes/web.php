@@ -5,6 +5,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\TransversalidadController;
 use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,6 +63,11 @@ Route::middleware([
 
     Route::get('/download/{doc}/{id}',[DownloadController::class,'download']);
     Route::get('search',[ReportController::class,'search'])->name('reporte.search');
+    Route::get('users',[UserController::class,'index'])->name('users.index');
+    Route::get('cuser',[UserController::class,'create'])->name('users.create');
+    Route::post('store-user', [UserController::class, 'store']);
+    Route::get('update-user/{id}',[UserController::class,'update'])->name('users.update');
+    Route::patch('edit-user/{id}',[UserController::class,'edit'])->name('user.edit');
 
 
 

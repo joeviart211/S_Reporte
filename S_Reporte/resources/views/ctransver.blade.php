@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('store-transv')}}">
                     @csrf
-                    <label for="exampleInputEmail1">Nombre</label>
+                    <label for="InputData1">Nombre</label>
                     <input type="text" id="nombre" name="nombre" class="form-control" required="true">
 
                     <br>
