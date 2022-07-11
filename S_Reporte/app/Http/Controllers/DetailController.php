@@ -24,7 +24,7 @@ class DetailController extends Controller
 
         // $N = $request->file('')->getClientOriginalName();
 
-        $Departamento=$request->user()->currentTeam->id;
+        // $Departamento=$request->user()->currentTeam->id;
         // $detail->documento_dd=$pathDD;
         $nameDG = $request->file('documentoDG')->getClientOriginalName();
         $pathDG = $request->file('documentoDG')->store('public');
@@ -156,7 +156,7 @@ class DetailController extends Controller
         // $detail->Rmime=$_FILES['reporte']['type'];
         // $detail->Rname=$Rname;
         $detail->save();
-        
+
         return redirect()->route('reportes',);
 
     }

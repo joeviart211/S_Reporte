@@ -14,6 +14,7 @@ class ReportController extends Controller
      public function store(Request $request)
     {
         $user=auth()->user()->id;
+       
 
         $reporte = new Reporte;
         $reporte->fuente = $request->fuente;

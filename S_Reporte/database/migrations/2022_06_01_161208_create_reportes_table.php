@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('fuente');
             $table->date('fecha');
             $table->string('n_situacion');
-            $table->string('transversalidad')->nullable();
+            $table->foreignId('transversalidad');
             $table->boolean('metadato')->nullable()->default(0);
             $table->boolean('evento')->nullable()->default(0);
             $table->boolean('tema_selecto')->nullable()->default(0);
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('proceso_validacion');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('transversalidad')->references('nombre')->on('transversalidad')->onUpdate('cascade')->onDelete('set null');
+            // $table->foreign('transversalidad')->references('id')->on('transversalidad')->onUpdate('cascade')->onDelete('set null');
 
         });
     }
