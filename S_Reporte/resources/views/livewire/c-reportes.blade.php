@@ -1,11 +1,12 @@
 <div class="grid grid-cols-1 divide-y">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <div>
 
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Información General</h2>
         <br>
-    <form name="add-post-form" id="add-post-form" method="post" action="{{url('store-report')}}">
+    <form name="add-post-form" id="add-post-form" method="post"  enctype="multipart/form-data" action="{{url('store-report')}}">
         @csrf
         <label for="InputData1">Fuente</label>
         <input type="text" id="fuente" name="fuente" class="form-control" required="true">
@@ -25,7 +26,7 @@
     <div class="inline-block relative w-64">
         <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" name="transversalidad">
             @foreach($transversalidades as $transversalidad => $value )
-            <option value={{$value->id}}>{{$value->nombre}}</option>
+            <option value={{$value->eje}}>{{$value->eje}}</option>
 
             @endforeach
         </select>
@@ -47,10 +48,76 @@
 </div>
     <div>
     <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Analisis de la situación</h2>
+    <label for="InputData1">Direccion General</label>
+<input type="text" id="direccionG" name="direccionG" class="form-control" required="true" size="20">
+
+<label for="InputData1">Direccion  Web 1</label>
+<input type="text" id="direccionesWebG" name="direccionesWebG" class="form-control">
+<br>
+
+<label for="InputData1">Adjuntar</label>
+<input type="file" id="documentoDG" name="documentoDG" class="form-control" >
+<br><br>
 </div>
 <div>
-    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Resultados de analisis </h2>
+<label for="InputData1">Direccion  diagnostico </label>
+<input type="text" id="direcciones_diagnostico" name="direcciones_diagnostico" class="form-control" required="true">
+<label for="InputData1">Direccion  Web 2</label>
+<input type="text" id="direccionesWebD" name="direccionesWebD" class="form-control" required="true">
+
+
+    <br>
+<label for="InputData1">Adjuntar  </label>
+
+<input type="file" id="documento_dd" name="documento_dd" class="form-control" >
 </div>
+
+<br>
+<div>
+<label for="InputData1">Direccion Proyecto </label>
+<input type="text" id="direccion_proyecto" name="direccion_proyecto" class="form-control" required="true">
+<label for="InputData1">Direccion  Web 3 </label>
+<input type="text" id="direccion_web_P" name="direccion_web_P" class="form-control" required="true">
+
+<br>
+<label for="InputData1">Documento de proyecto </label>
+<input type="file" id="documento_DP" name="documento_DP" class="form-control" required="true">
+</div>
+<br>
+<div>
+<label for="InputData1">Direccion de planeación  </label>
+<input type="text" id="direccion_planeacion	" name="direccion_planeacion" class="form-control" required="true">
+<label for="InputData1">Direccion   Web 4 </label>
+<input type="text" id="	direccion_web_Pl" name="direccion_web_Pl" class="form-control" required="true">
+    <br>
+<label for="InputData1">Documento de planeación </label>
+
+<input type="file" id="documento_P" name="documento_P" class="form-control" required="true">
+</div>
+<div>
+
+</div>
+<br>
+</div>
+<div>
+
+    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Resultados de analisis </h2>
+    <label for="InputData1">Observaciones  </label>
+    <input type="text" id="observaciones" name="observaciones" class="form-control" required="true">
+
+    <label for="InputData1">Reporte  </label>
+    <input type="file" id="reporte" name="reporte" class="form-control" required="true">
+    <input type="checkbox" name="tema_selecto" value="1">Alerta</b>
+    <input type="checkbox" name="metadato" value="1">Comunicado</b>
+    <input type="checkbox" name="evento" value="1">Tarjeta Informatica</b>
+</div>
+
+@error('reporte')
+
+
+{{-- cachar error de validación --}}
+
+@enderror
 <button type="submit" class="btn btn-primary">Submit</button>
 </div>
 </div>

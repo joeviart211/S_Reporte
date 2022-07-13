@@ -11,9 +11,20 @@
                 <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{route('transversalidad.edit',$transversalidad->id)}}">
                     @method('PATCH')
                     @csrf
-                    <label>Nombre</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control" required="true" value="{{$transversalidad->nombre}}">
+                    {{-- <label>Nombre</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" required="true" value="{{$transversalidad->nombre}}"> --}}
+                    <label for="InputData1">Fecha</label>
+                    <input type="date" id="fecha" name="fecha" class="form-control" required="true" value="{{$transversalidad->fecha}}">
 
+                    <br>
+                    <label for="InputData1">Eje</label>
+                    <input type="text" id="eje" name="eje" class="form-control" required="true" value="{{$transversalidad->eje}}">
+
+                    <label for="InputData1">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" required="true" value="{{$transversalidad->nombre}}"  >
+
+                        <br>
+                        <textarea id="justificacion" name="justificacion" rows="5" cols="30" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md"  > {{$transversalidad->justificacion}} </textarea>
                     <br>
 
 

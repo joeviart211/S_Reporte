@@ -18,7 +18,9 @@ class DetailController extends Controller
             'documento_P' => 'mimes:xls,xlsx,doc,pdf',
             'reporte' => 'mimes:xls,xlsx,doc,pdf',
 
-           ]);
+
+
+        ]);
 
            //subir a carpetas
 

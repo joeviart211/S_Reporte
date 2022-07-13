@@ -2,6 +2,9 @@
 
 namespace App\Http\Livewire;
 use App\Models\Detalle;
+use App\Models\Reporte;
+use Illuminate\Support\Facades\DB;
+
 use Livewire\Component;
 
 class Detail extends Component
@@ -12,11 +15,13 @@ class Detail extends Component
         $actual_link = "$_SERVER[REQUEST_URI]";
         $ident=substr($actual_link, 10);
 
-        $detalles= Detalle::where('id',$ident)->get();
-        
+        // $detalles= Reporte::where('id',$ident)->get();
+        $detalle = DB::table('reportes')->find($ident);
+        // dd($detalles);
+
 
         return view('livewire.Detail',[
-            'detalles'=>$detalles,
+            'detalle'=>$detalle,
             'ident'=>$ident
         ]
     );

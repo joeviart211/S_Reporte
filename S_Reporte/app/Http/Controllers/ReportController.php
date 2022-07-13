@@ -6,6 +6,7 @@ use  App\Models\Transversalidad;
 use Illuminate\Support\Facades\DB;
 
 
+
 use Illuminate\Http\Request;
 
 
@@ -13,8 +14,38 @@ class ReportController extends Controller
 {
      public function store(Request $request)
     {
+        // $validatedData = $request->validate([
+        //     'documentoDG' => 'mimes:xls,xlsx,doc,pdf',
+        //     'documento_dd' => 'mimes:xls,xlsx,doc,pdf',
+        //     'documento_DP' => 'mimes:xls,xlsx,doc,pdf',
+        //     'documento_P' => 'mimes:xls,xlsx,doc,pdf',
+        //     'reporte' => 'mimes:xls,xlsx,doc,pdf',
+
+
+
+        // ]);
+
+
         $user=auth()->user()->id;
-       
+        $nameDG = $request->file('documentoDG')->getClientOriginalName();
+        $request->file('documentoDG')->storeAs('public/documentoDG',$nameDG);
+        $pathDG =$nameDG;
+         // dd($pathDG);
+        $nameDD=$request->file('documento_dd')->getClientOriginalName();
+        $request->file('documento_dd')->storeAs('public/documentoDD',$nameDD);
+        $pathDD=$nameDD;
+        $nameDP=$request->file('documento_DP')->getClientOriginalName();
+        $request->file('documento_DP')->storeAs('public/documentoDP',$nameDP);
+        $pathDP=$nameDP;
+        // $pathDP=$request->file('documento_DP')->store('public');
+
+        $nameP=$request->file('documento_P')->getClientOriginalName();
+        $request->file('documento_P')->storeAs('public/DocumentoP',$nameP);
+        $pathP=$nameP;
+        $Rname=$request->file('reporte')->getClientOriginalName();
+        $request->file('reporte')->storeAs('public/Reporte',$Rname);
+        $Rpath=$Rname;
+
 
         $reporte = new Reporte;
         $reporte->fuente = $request->fuente;
@@ -27,13 +58,42 @@ class ReportController extends Controller
         $reporte->tema_selecto=$request->tema_selecto;
         $reporte->reseña=$request->reseña;
         $reporte->proceso_validacion=$request->proceso_validacion;
+        $reporte->direccionG=$request->direccionG;
+        $reporte->direccionesWebG=$request->direccionesWebG;
+        $reporte->documentoDG=$pathDG;
+        $reporte->DDGmime=$_FILES['documentoDG']['type'];
+        $reporte->DDGname=$nameDG;
+
+        $reporte->direcciones_diagnostico=$request->direcciones_diagnostico;
+        $reporte->direccionesWebD=$request->direccionesWebD;
+        $reporte->direccion_proyecto=$request->direccion_proyecto;
+        $reporte->direccion_web_P=$request->direccion_web_P;
+
+        $reporte->documento_dd=$pathDD;
+        $reporte->DDDmime=$_FILES['documento_dd']['type'];
+        $reporte->DDDname=$nameDD;
+
+
+        $reporte->documento_DP=$pathDP;
+        $reporte->DDPmime=$_FILES['documento_DP']['type'];
+        $reporte->DDPname=$nameDP;
+        $reporte->direccion_planeacion=$request->direccion_planeacion;
+        $reporte->direccion_web_Pl=$request->direccion_web_Pl;
+        $reporte->documento_P=$pathP;
+        $reporte->DPmime=$_FILES['documento_P']['type'];
+        $reporte->DPname=$nameP;
+        $reporte->observaciones=$request->observaciones;
+
+        $reporte->reporte=$Rpath;
+        $reporte->Rmime=$_FILES['reporte']['type'];
+        $reporte->Rname=$Rname;
 
 
 
         $reporte->save();
         $id=$reporte->id;
 
-        return redirect()->route('cdetalles', ['id' => $id]);
+        return redirect()->route('dashboard', );
     }
     public function update(Request $request){
         $reporte = Reporte::find($request->id);
@@ -54,6 +114,36 @@ class ReportController extends Controller
         $reporte->reseña=$request->reseña;
         $reporte->proceso_validacion=$request->proceso_validacion;
 
+        $reporte->direccionG=$request->direccionG;
+        $reporte->direccionesWebG=$request->direccionesWebG;
+        $reporte->documentoDG=$pathDG;
+        $reporte->DDGmime=$_FILES['documentoDG']['type'];
+        $reporte->DDGname=$nameDG;
+
+        $reporte->direcciones_diagnostico=$request->direcciones_diagnostico;
+        $reporte->direccionesWebD=$request->direccionesWebD;
+        $reporte->direccion_proyecto=$request->direccion_proyecto;
+        $reporte->direccion_web_P=$request->direccion_web_P;
+
+        $reporte->documento_dd=$pathDD;
+        $reporte->DDDmime=$_FILES['documento_dd']['type'];
+        $reporte->DDDname=$nameDD;
+
+
+        $reporte->documento_DP=$pathDP;
+        $reporte->DDPmime=$_FILES['documento_DP']['type'];
+        $reporte->DDPname=$nameDP;
+        $reporte->direccion_planeacion=$request->direccion_planeacion;
+        $reporte->direccion_web_Pl=$request->direccion_web_Pl;
+        $reporte->documento_P=$pathP;
+        $reporte->DPmime=$_FILES['documento_P']['type'];
+        $reporte->DPname=$nameP;
+        $reporte->observaciones=$request->observaciones;
+
+        $reporte->reporte=$Rpath;
+        $reporte->Rmime=$_FILES['reporte']['type'];
+        $reporte->Rname=$Rname;
+
 
         $reporte->save();
         return redirect()->route('reportes', );
@@ -68,6 +158,7 @@ class ReportController extends Controller
     }
     public function search(Request $request){
         // $request->filter , $request->search $request->tipo
+        $transversalidades=DB::table('transversalidad');
         if($request->tipo == 'all'){
         $searches = DB::table('reportes')->where($request->filter, $request->search)->get();
         }else{
@@ -88,7 +179,7 @@ class ReportController extends Controller
         }
 
         // dd($request->filter, $request->search,$searches,$request->tipo);
-        return view('searches',compact('searches'));
+        return view('searches',compact('searches','transversalidades'));
 
     }
 

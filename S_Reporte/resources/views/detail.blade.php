@@ -10,7 +10,7 @@
         </h2>
         <h2>
             <x-jet-nav-link href="{{ route('detalle.update',$currentURL) }}" :active="request()->routeIs('dashboard')">
-                {{ __('Editar detalle') }}
+                {{ __('Editar detallce') }}
             </x-jet-nav-link>
         </h2>
 

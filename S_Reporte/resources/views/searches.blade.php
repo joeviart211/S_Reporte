@@ -62,16 +62,17 @@
                       <tr>
                           @foreach($searches as $reporte)
                           <th>
-                              {{ $reporte -> fuente }}
+                              {{ $reporte ->fuente }}
                           </th>
                           <th>
-                              {{$reporte -> fecha}}
+                              {{$reporte ->fecha}}
                           </th>
                           <th>
                               {{$reporte ->n_situacion}}
                           </th>
                           <th>
-                              {{$reporte -> transversalidad}}
+
+                              {{$reporte ->transversalidad}}
 
                           </th>
                           <th>

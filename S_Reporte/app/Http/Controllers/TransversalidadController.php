@@ -14,13 +14,18 @@ class TransversalidadController extends Controller
         $transversalidad = new Transversalidad;
         // $name=str_replace(" ","_", $request->nombre);
         $transversalidad->nombre=$request->nombre;
+        $transversalidad->eje=$request->eje;
+        $transversalidad->fecha=$request->fecha;
+        $transversalidad->justificacion=$request->justificacion;
 
-        // $i=0;
-        // foreach($ident as $id){
-        // $i=$i+1;//no encontré una forma de hacer una columna auto_incr que no sea la llave
 
-        // }
-        // $transversalidad->id=$i;
+
+        $i=0;
+        foreach($ident as $id){
+        $i=$i+1;//no encontré una forma de hacer una columna auto_incr que no sea la llave
+
+        }
+        $transversalidad->id=$i;
 
         $transversalidad->save();
         return redirect()->route('dashboard', );
