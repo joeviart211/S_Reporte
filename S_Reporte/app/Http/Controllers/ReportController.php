@@ -50,7 +50,10 @@ class ReportController extends Controller
         $reporte = new Reporte;
         $reporte->fuente = $request->fuente;
         $reporte->user_id = auth()->user()->id;
-        $reporte->fecha=$request->fecha;
+        $date=date("d-m-y", strtotime($request->fecha));
+
+
+        $reporte->fecha=$date;
         $reporte->n_situacion=$request->n_situacion;
         $reporte->transversalidad=$request->transversalidad;
         $reporte->metadato=$request->metadato;
@@ -105,7 +108,14 @@ class ReportController extends Controller
         $reporte = Reporte::find($request->id);
         $reporte->fuente = $request->fuente;
         $reporte->user_id = auth()->user()->id;
-        $reporte->fecha=$request->fecha;
+
+
+        $date=date("d-m-Y", strtotime($reporte->fecha));
+       
+
+
+
+        $reporte->fecha=$date;
         $reporte->n_situacion=$request->n_situacion;
         $reporte->transversalidad=$request->transversalidad;
         $reporte->metadato=$request->metadato;
@@ -160,7 +170,9 @@ class ReportController extends Controller
         // $request->filter , $request->search $request->tipo
         $transversalidades=DB::table('transversalidad');
         if($request->tipo == 'all'){
-        $searches = DB::table('reportes')->where($request->filter, $request->search)->get();
+        // $searches = DB::table('reportes')->where($request->filter,$request->search)->get();
+        $searches = DB::table('reportes')->where($request->filter,'like', '%' . $request->search . '%')->get();
+
         }else{
             if($request->tipo=='metadato'){
                 $searches = DB::table('reportes')->where($request->filter, $request->search)

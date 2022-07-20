@@ -54,7 +54,8 @@
             {{ $reporte -> fuente }}
         </th>
         <th>
-            {{$reporte -> fecha}}
+            
+                {{$reporte -> fecha}}
         </th>
         <th>
             {{$reporte ->n_situacion}}
@@ -68,24 +69,7 @@
         </th>
         <th>
             <!-- Button trigger modal -->
-<button type="button" class="px-6
-py-2.5
-bg-blue-600
-text-white
-font-medium
-text-xs
-leading-tight
-uppercase
-rounded
-shadow-md
-hover:bg-blue-700 hover:shadow-lg
-focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-active:bg-blue-800 active:shadow-lg
-transition
-duration-150
-ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModal">
-Launch demo modal
-</button>
+
 
 <!-- Modal -->
 <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"

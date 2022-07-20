@@ -10,6 +10,7 @@ class DownloadController extends Controller
     public function download(Request $request,$doc){
 
 
+    //     dd("a");
 
 
         $detalle=Reporte::find($request->id);
@@ -42,12 +43,12 @@ class DownloadController extends Controller
 
                 }else{
                     if($doc=="documento_P"){
-                        $path=$detalle->documento_DP;
-                        $path=public_path("storage/public/documentoDP/".$path);
+                        $path=$detalle->documento_P;
+                        $path=public_path("storage/public/documentoP/".$path);
                         $type=$detalle->DPmime;
                         $headers = ['Content-Type:'.$type ];
                         $fileName= $detalle->DPname;
-                    }else
+                    }else{
                     if($doc=="reporte"){
                         $path=$detalle->reporte;
                         $path=public_path("storage/public/Reporte/".$path);
@@ -61,6 +62,7 @@ class DownloadController extends Controller
             }
 
         }
+    }
 
 
 

@@ -11,12 +11,13 @@
                 <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{route('detalle.edit',$detail->id)}}">
                     @method('PATCH')
                     @csrf
+                    <h1>Test</h1>
                     <div>
                         <label for="InputData1">Direccion General</label>
                         <input type="text" id="direccionG" name="direccionG" class="form-control" required="true" value={{$detail->direccionG}}>
                         <input name="id" type="hidden" value= {{$id}} >
                         <label for="InputData1">Direccion  Web General</label>
-                        <input type="text" id="direccionesWebG" name="direccionesWebG" class="form-control" required="true">
+                        <input type="text" id="direccionesWebG" name="direccionesWebG" class="form-control" required="true" value=reporte->direccionesWebG >
                         <br>
 
                         <label for="InputData1">Documento direccion   General</label>

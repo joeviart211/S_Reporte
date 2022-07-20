@@ -12,9 +12,9 @@ class TransversalidadController extends Controller
 
        $ident=Transversalidad::all();
         $transversalidad = new Transversalidad;
-        // $name=str_replace(" ","_", $request->nombre);
+        $name=str_replace(" ","_", $request->eje);
         $transversalidad->nombre=$request->nombre;
-        $transversalidad->eje=$request->eje;
+        $transversalidad->eje=$name;
         $transversalidad->fecha=$request->fecha;
         $transversalidad->justificacion=$request->justificacion;
 
@@ -39,9 +39,10 @@ class TransversalidadController extends Controller
     }
     public function edit(Request $request){
 
-        $transversalidad = Transversalidad::find($request->id);
-        $name=str_replace(" ","_", $request->nombre);
+        $transversalidad = Transversalidad::find($request->eje);
+        $name=str_replace(" ","_", $request->eje);
         $transversalidad->nombre = $name;
+        $transversalidad->eje=$name;
 
 
         $transversalidad->save();

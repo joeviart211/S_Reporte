@@ -6,29 +6,53 @@
     </x-slot>
 
     <div class="py-12">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{route('report.edit',$reporte->id)}}">
                     @method('PATCH')
                     @csrf
+
                     <label for="InputData1">Fuente</label>
-        <input type="text" id="fuente" name="fuente" class="form-control" required="true">
+        <input type="text" id="fuente" name="fuente" class="form-control" required="true" value= {{$reporte->fuente}}>
         <label for="InputData1">Fecha</label>
-        <input type="date" id="fecha" name="fecha" class="form-control" required="true">
-        <input type="checkbox" name="tema_selecto" value="1">Tema Selecto </b>
+        <input type="text" id="fecha" name="fecha" class="form-control" required="true" value={{$reporte->fecha}}>
+        @if ($reporte->tema_selecto==1)
+        <input type="checkbox" name="tema_selecto" value="1" checked>Tema Selecto </b>
+        @else
+       <input type="checkbox" name="tema_selecto" value="1">Tema Selecto </b>
+        @endif
+
+
+        @if ($reporte->metadato==1)
+        <input type="checkbox" name="metadato" value="1" checked>Metadato</b>
+
+        @else
         <input type="checkbox" name="metadato" value="1">Metadato</b>
+
+        @endif
+        @if ($reporte->evento==1)
+
+        <input type="checkbox" name="evento" value="1"checked>Evento</b>
+
+        @else
         <input type="checkbox" name="evento" value="1">Evento</b>
+
+        @endif
+
         <br><br>
         <div>
         <label for="InputData1">Nombre de la situación</label>
-        <textarea id="n_situacion" name="n_situacion" rows="5" cols="30" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" ></textarea>
+        <textarea id="n_situacion" name="n_situacion" rows="5" cols="30" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" >{{$reporte->n_situacion}}</textarea>
         </div>
         <br>
         <label for="InputData1">Transversalidad</label>
 
     <div class="inline-block relative w-64">
         <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" name="transversalidad">
+            <option value={{$reporte->transversalidad}}>{{$reporte->transversalidad}}</option>
             @foreach($transversalidades as $transversalidad => $value )
+
             <option value={{$value->eje}}>{{$value->eje}}</option>
 
             @endforeach
@@ -39,30 +63,42 @@
       </div>
     <br>
     <label for="InputData1">Reseña</label>
-    <textarea id="reseña" name="reseña" rows="5" cols="60" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" ></textarea>
+    <textarea id="reseña" name="reseña" rows="5" cols="60" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" >{{$reporte->reseña}}</textarea>
 <br>
+
 <label for="InputData1">Proceso de validación</label>
-<input type="text" id="proceso_validacion" name="proceso_validacion" class="form-control" required="true">
+<textarea id="proceso_validacion" name="proceso_validacion " rows="1" cols="60" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" >{{$reporte->proceso_validacion}}</textarea>
 
 
 
 
 <br>
 
-    <div>
-    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Analisis de la situación</h2>
-    <label for="InputData1">Direccion General</label>
-<input type="text" id="direccionG" name="direccionG" class="form-control" required="true" size="20">
+
+<h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Analisis de la situación</h2>
+
+<div class="grid grid-cols-2 gap-2">
+    <div>01</div>
+
+    <div>09</div>
+  </div>
+
+
+
+{{-- <label for="InputData1">Direccion General</label>
+<textarea id="direccionG" name="direccionG " rows="1" cols="60" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" >{{$reporte->direccionG}}</textarea>
 
 <label for="InputData1">Direccion  Web 1</label>
-<input type="text" id="direccionesWebG" name="direccionesWebG" class="form-control">
+<textarea id="direccionesWebG" name="direccionesWebG " rows="1" cols="60" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" >{{$reporte->direccionesWebG}}</textarea>
+
 <br>
 
 <label for="InputData1">Adjuntar</label>
 <input type="file" id="documentoDG" name="documentoDG" class="form-control" >
 <br><br>
 </div>
-<div>
+
+
 <label for="InputData1">Direccion  diagnostico </label>
 <input type="text" id="direcciones_diagnostico" name="direcciones_diagnostico" class="form-control" required="true">
 <label for="InputData1">Direccion  Web 2</label>
@@ -73,6 +109,7 @@
 <label for="InputData1">Adjuntar  </label>
 
 <input type="file" id="documento_dd" name="documento_dd" class="form-control" >
+
 </div>
 
 <br>
@@ -118,7 +155,7 @@
 @error('reporte')
 
 
-{{-- cachar error de validación --}}
+
 
 @enderror
 
@@ -133,5 +170,5 @@
         </div>
     </div>
 </div>
-</div>
+</div> --}}
 </x-app-layout>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('fuente');
-            $table->date('fecha');
+            $table->text('fecha');
             $table->string('n_situacion');
             $table->string('transversalidad',100)->nullable()->unsinged();
             $table->boolean('metadato')->nullable()->default(0);
