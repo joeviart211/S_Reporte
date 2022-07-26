@@ -76,7 +76,7 @@
 
                           </th>
                           <th>
-                              <a href="detalles/{{$reporte->id}}" target="_blank">a</a>
+                              <a href="detalles/{{$reporte->id}}" target="_blank">Info</a>
                           </th>
                           <th>
                               {{-- <a href="{{ route('transversalidad.update',$transversalidad->id)}}" class="btn btn-primary">Edit</a> --}}

@@ -54,7 +54,7 @@
             {{ $reporte -> fuente }}
         </th>
         <th>
-            
+
                 {{$reporte -> fecha}}
         </th>
         <th>
@@ -65,7 +65,7 @@
 
         </th>
         <th>
-            <a href="detalles/{{$reporte->id}}" target="_blank">a</a>
+            <a href="detalles/{{$reporte->id}}" target="_blank">Info</a>
         </th>
         <th>
             <!-- Button trigger modal -->
@@ -85,7 +85,7 @@ class="modal-content border-none shadow-lg relative flex flex-col w-full pointer
     data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <div class="modal-body relative p-4">
-  Modal body text goes here.
+ 
 </div>
 <div
   class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">

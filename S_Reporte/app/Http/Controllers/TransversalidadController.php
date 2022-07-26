@@ -20,20 +20,15 @@ class TransversalidadController extends Controller
 
 
 
-        $i=0;
-        foreach($ident as $id){
-        $i=$i+1;//no encontré una forma de hacer una columna auto_incr que no sea la llave
 
-        }
-        $transversalidad->id=$i;
 
         $transversalidad->save();
         return redirect()->route('dashboard', );
     }
     public function update(Request $request){
 
-        $transversalidad = Transversalidad::find($request->id);
-
+        $transversalidad = Transversalidad::find($request->eje);
+ dd($request->eje);
         return view ('etransver',compact('transversalidad'));
 
     }
@@ -49,7 +44,7 @@ class TransversalidadController extends Controller
         return redirect()->route('dashboard', );
     }
     public function destroy(Request $request){
-        $transversalidad = Transversalidad::find($request->id);
+        $transversalidad = Transversalidad::find($request->eje);
         $transversalidad->delete();
 
         return redirect()->route('dashboard',);

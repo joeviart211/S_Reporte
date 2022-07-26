@@ -23,10 +23,10 @@
             {{$transversalidad -> eje}}
         </th>
 
-        <th><a href="{{ route('transversalidad.update',$transversalidad->id)}}" class="btn btn-primary">Editar</a>
+        <th><a href="{{ route('transversalidad.update',$transversalidad->eje)}}" class="btn btn-primary">Editar</a>
         {{-- cambiar a iconos --}}
         <th>
-            <form action="{{ route('transversalidad.destroy', $transversalidad->id)}}" method="post">
+            <form action="{{ route('transversalidad.destroy', $transversalidad->eje)}}" method="post">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger" type="submit">Borrar</button>

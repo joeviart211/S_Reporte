@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('transversalidad', function (Blueprint $table) {
             $table->string('eje')->primary()->nullable();
-            $table->string('nombre',100);
+            $table->text('nombre');
             $table->date('fecha');
             $table->text('justificacion');
-            $table->integer('id');
+
 
             $table->timestamps();
         });

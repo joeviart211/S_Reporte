@@ -14,41 +14,70 @@ class ReportController extends Controller
 {
      public function store(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'documentoDG' => 'mimes:xls,xlsx,doc,pdf',
-        //     'documento_dd' => 'mimes:xls,xlsx,doc,pdf',
-        //     'documento_DP' => 'mimes:xls,xlsx,doc,pdf',
-        //     'documento_P' => 'mimes:xls,xlsx,doc,pdf',
-        //     'reporte' => 'mimes:xls,xlsx,doc,pdf',
+        $validatedData = $request->validate([
+            'documentoDG' => 'mimes:xls,xlsx,doc,pdf',
+            'documento_dd' => 'mimes:xls,xlsx,doc,pdf',
+            'documento_DP' => 'mimes:xls,xlsx,doc,pdf',
+            'documento_P' => 'mimes:xls,xlsx,doc,pdf',
+            'reporte' => 'mimes:xls,xlsx,doc,pdf',
 
 
 
-        // ]);
+        ]);
 
-
+        $reporte = new Reporte;
         $user=auth()->user()->id;
+        if($request->file('documentoDG')==null){
+
+        }else{
         $nameDG = $request->file('documentoDG')->getClientOriginalName();
         $request->file('documentoDG')->storeAs('public/documentoDG',$nameDG);
         $pathDG =$nameDG;
-         // dd($pathDG);
+        $reporte->documentoDG=$pathDG;
+        $reporte->DDGmime=$_FILES['documentoDG']['type'];
+        $reporte->DDGname=$nameDG;
+
+                 }
+    if($request->file('documento_dd')==null){
+
+
+    }else{
         $nameDD=$request->file('documento_dd')->getClientOriginalName();
         $request->file('documento_dd')->storeAs('public/documentoDD',$nameDD);
         $pathDD=$nameDD;
+        $reporte->documento_dd=$pathDD;
+        $reporte->DDDmime=$_FILES['documento_dd']['type'];
+        $reporte->DDDname=$nameDD;
+
+    }
+    if($request->file('documento_DP')==null){
+
+    }else{
         $nameDP=$request->file('documento_DP')->getClientOriginalName();
         $request->file('documento_DP')->storeAs('public/documentoDP',$nameDP);
         $pathDP=$nameDP;
+        $reporte->documento_DP=$pathDP;
+        $reporte->DDPmime=$_FILES['documento_DP']['type'];
+        $reporte->DDPname=$nameDP;
         // $pathDP=$request->file('documento_DP')->store('public');
-
+    }
+    if($request->file('documento_P')==null){}else{
         $nameP=$request->file('documento_P')->getClientOriginalName();
         $request->file('documento_P')->storeAs('public/DocumentoP',$nameP);
         $pathP=$nameP;
+        $reporte->documento_P=$pathP;
+        $reporte->DPmime=$_FILES['documento_P']['type'];
+        $reporte->DPname=$nameP;
+
+    }
         $Rname=$request->file('reporte')->getClientOriginalName();
         $request->file('reporte')->storeAs('public/Reporte',$Rname);
         $Rpath=$Rname;
 
 
-        $reporte = new Reporte;
-        $reporte->fuente = $request->fuente;
+
+        $reporte->fuente =$request->fuente;
+
         $reporte->user_id = auth()->user()->id;
         $date=date("d-m-y", strtotime($request->fecha));
 
@@ -63,28 +92,18 @@ class ReportController extends Controller
         $reporte->proceso_validacion=$request->proceso_validacion;
         $reporte->direccionG=$request->direccionG;
         $reporte->direccionesWebG=$request->direccionesWebG;
-        $reporte->documentoDG=$pathDG;
-        $reporte->DDGmime=$_FILES['documentoDG']['type'];
-        $reporte->DDGname=$nameDG;
+
 
         $reporte->direcciones_diagnostico=$request->direcciones_diagnostico;
         $reporte->direccionesWebD=$request->direccionesWebD;
         $reporte->direccion_proyecto=$request->direccion_proyecto;
         $reporte->direccion_web_P=$request->direccion_web_P;
 
-        $reporte->documento_dd=$pathDD;
-        $reporte->DDDmime=$_FILES['documento_dd']['type'];
-        $reporte->DDDname=$nameDD;
 
 
-        $reporte->documento_DP=$pathDP;
-        $reporte->DDPmime=$_FILES['documento_DP']['type'];
-        $reporte->DDPname=$nameDP;
         $reporte->direccion_planeacion=$request->direccion_planeacion;
         $reporte->direccion_web_Pl=$request->direccion_web_Pl;
-        $reporte->documento_P=$pathP;
-        $reporte->DPmime=$_FILES['documento_P']['type'];
-        $reporte->DPname=$nameP;
+
         $reporte->observaciones=$request->observaciones;
 
         $reporte->reporte=$Rpath;
@@ -104,14 +123,71 @@ class ReportController extends Controller
 
         return view ('ereport',compact('reporte','transversalidades'));
     }
+
     public function edit(Request $request){
         $reporte = Reporte::find($request->id);
+        $user=auth()->user()->id;
+        if($request->file('documentoDG')==null){
+
+        }else{
+        $nameDG = $request->file('documentoDG')->getClientOriginalName();
+        $request->file('documentoDG')->storeAs('public/documentoDG',$nameDG);
+        $pathDG =$nameDG;
+        $reporte->documentoDG=$pathDG;
+        $reporte->DDGmime=$_FILES['documentoDG']['type'];
+        $reporte->DDGname=$nameDG;
+
+                 }
+        if($request->file('documento_dd')==null){
+
+
+        }else{
+            $nameDD=$request->file('documento_dd')->getClientOriginalName();
+            $request->file('documento_dd')->storeAs('public/documentoDD',$nameDD);
+            $pathDD=$nameDD;
+            $reporte->documento_dd=$pathDD;
+            $reporte->DDDmime=$_FILES['documento_dd']['type'];
+            $reporte->DDDname=$nameDD;
+
+
+        }
+        if($request->file('documento_DP')==null){
+
+        }else{
+            $nameDP=$request->file('documento_DP')->getClientOriginalName();
+            $request->file('documento_DP')->storeAs('public/documentoDP',$nameDP);
+            $pathDP=$nameDP;
+            $reporte->documento_DP=$pathDP;
+            $reporte->DDPmime=$_FILES['documento_DP']['type'];
+            $reporte->DDPname=$nameDP;
+            // $pathDP=$request->file('documento_DP')->store('public');
+        }
+        if($request->file('documento_P')==null){}else{
+            $nameP=$request->file('documento_P')->getClientOriginalName();
+            $request->file('documento_P')->storeAs('public/DocumentoP',$nameP);
+            $pathP=$nameP;
+            $reporte->documento_P=$pathP;
+            $reporte->DPmime=$_FILES['documento_P']['type'];
+            $reporte->DPname=$nameP;
+
+        }
+        if($request->file('reporte')==null){}else{
+
+
+
+        $Rname=$request->file('reporte')->getClientOriginalName();
+        $request->file('reporte')->storeAs('public/Reporte',$Rname);
+        $Rpath=$Rname;
+        $reporte->reporte=$Rpath;
+        $reporte->Rmime=$_FILES['reporte']['type'];
+        $reporte->Rname=$Rname;
+}
         $reporte->fuente = $request->fuente;
         $reporte->user_id = auth()->user()->id;
 
 
         $date=date("d-m-Y", strtotime($reporte->fecha));
-       
+
 
 
 
@@ -126,37 +202,24 @@ class ReportController extends Controller
 
         $reporte->direccionG=$request->direccionG;
         $reporte->direccionesWebG=$request->direccionesWebG;
-        $reporte->documentoDG=$pathDG;
-        $reporte->DDGmime=$_FILES['documentoDG']['type'];
-        $reporte->DDGname=$nameDG;
+
 
         $reporte->direcciones_diagnostico=$request->direcciones_diagnostico;
         $reporte->direccionesWebD=$request->direccionesWebD;
         $reporte->direccion_proyecto=$request->direccion_proyecto;
         $reporte->direccion_web_P=$request->direccion_web_P;
 
-        $reporte->documento_dd=$pathDD;
-        $reporte->DDDmime=$_FILES['documento_dd']['type'];
-        $reporte->DDDname=$nameDD;
 
 
-        $reporte->documento_DP=$pathDP;
-        $reporte->DDPmime=$_FILES['documento_DP']['type'];
-        $reporte->DDPname=$nameDP;
-        $reporte->direccion_planeacion=$request->direccion_planeacion;
-        $reporte->direccion_web_Pl=$request->direccion_web_Pl;
-        $reporte->documento_P=$pathP;
-        $reporte->DPmime=$_FILES['documento_P']['type'];
-        $reporte->DPname=$nameP;
+
+
         $reporte->observaciones=$request->observaciones;
 
-        $reporte->reporte=$Rpath;
-        $reporte->Rmime=$_FILES['reporte']['type'];
-        $reporte->Rname=$Rname;
+
 
 
         $reporte->save();
-        return redirect()->route('reportes', );
+        return redirect()->route('dashboard', );
 
     }
     public function destroy(Request $request)
