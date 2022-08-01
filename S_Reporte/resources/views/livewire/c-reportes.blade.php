@@ -1,3 +1,14 @@
+@if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Error</h2>
+                    <br>
+                    @foreach ($errors->all() as $error)
+                        <li>{{   $errors    }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
 <div class="grid grid-cols-1 divide-y">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">

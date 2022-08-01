@@ -102,7 +102,7 @@
                             </div>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('Perfil') }}
                             </x-jet-dropdown-link>
                             @if ( Auth::user()->admin ==1)
                             <x-jet-dropdown-link href="{{ route('users.index') }}">
@@ -124,7 +124,7 @@
 
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
                                          @click.prevent="$root.submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('Cerrar Sesión ') }}
                                 </x-jet-dropdown-link>
                             </form>
                         </x-slot>

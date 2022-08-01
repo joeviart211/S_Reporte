@@ -14,7 +14,8 @@ class ReportController extends Controller
 {
      public function store(Request $request)
     {
-        $validatedData = $request->validate([
+
+         $request->validate([
             'documentoDG' => 'mimes:xls,xlsx,doc,pdf',
             'documento_dd' => 'mimes:xls,xlsx,doc,pdf',
             'documento_DP' => 'mimes:xls,xlsx,doc,pdf',
@@ -23,7 +24,9 @@ class ReportController extends Controller
 
 
 
-        ]);
+        ])->return($validatedData);
+        
+
 
         $reporte = new Reporte;
         $user=auth()->user()->id;
@@ -234,16 +237,17 @@ class ReportController extends Controller
         $transversalidades=DB::table('transversalidad');
         if($request->tipo == 'all'){
         // $searches = DB::table('reportes')->where($request->filter,$request->search)->get();
-        $searches = DB::table('reportes')->where($request->filter,'like', '%' . $request->search . '%')->get();
+        $searches = DB::table('reportes')->where($request->filter,'like', '%' . $request->search . '%')->orderBy('id', 'DESC')->get();
 
         }else{
             if($request->tipo=='metadato'){
                 $searches = DB::table('reportes')->where($request->filter, $request->search)
                                                     ->where('metadato',1)->get();
-            }
+
+                              }
             if($request->tipo=='evento'){
                 $searches = DB::table('reportes')->where($request->filter, $request->search)
-                ->where('evento',1)->get();
+                ->where('evento',1)->paginate(15);
 
             }
             if($request->tipo=='tema_selecto'){

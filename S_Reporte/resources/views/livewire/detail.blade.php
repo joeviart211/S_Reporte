@@ -1,5 +1,11 @@
 <div>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
+    <head>
+        <title>Font Awesome Icons</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        </head>
+        <body>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
@@ -87,9 +93,16 @@
 
             <br>
 
+            @if ($detalle->documentoDG!=="")
+            <a href={{url("/download/documentoDG/{$detalle->id}")}} class="icon-block">
+                <i class="fa fa-file-text" style="font-size:48px;color:rgb(0, 21, 255)"></i>
+                <span>{{$detalle->documentoDG}}</span>
+            </a>
+            @endif
 
-            <a href={{url("/download/documentoDG/{$detalle->id}")}}>{{$detalle->documentoDG}}</a>
-            </div>
+            {{-- <a href={{url("/download/documentoDG/{$detalle->id}")}}>{{$detalle->documentoDG}}</a> --}}
+
+        </div>
 
             <div>
             <label for="InputData1">Direccion  diagnostico </label>
@@ -102,8 +115,13 @@
 
 
                 <br>
-
-                <a href={{url("/download/documento_dd/{$detalle->id}")}}>{{$detalle->documento_dd}}</a>
+                @if($detalle->documento_dd!=="")
+                <a href={{url("/download/documento_dd/{$detalle->id}")}} class="icon-block">
+                    <i class="fa fa-file-text" style="font-size:48px;color:rgb(0, 21, 255)"></i>
+                    <span>{{$detalle->documento_dd}}</span>
+                </a>
+                @endif
+                {{-- <a href={{url("/download/documento_dd/{$detalle->id}")}}>{{$detalle->documento_dd}}</a> --}}
 
                 </div>
             <div>
@@ -117,8 +135,13 @@
             {{-- <input type="text" id="direccion_web_P" name="direccion_web_P" class="form-control" required="true"> --}}
 
             <br>
-
-            <a href={{url("/download/documento_DP/{$detalle->id}")}}>{{$detalle->documento_DP}}</a>
+            @if ($detalle->documento_DP!=="")
+            <a href={{url("/download/documento_DP/{$detalle->id}")}} class="icon-block">
+                <i class="fa fa-file-text" style="font-size:48px;color:rgb(0, 21, 255)"></i>
+                <span>{{$detalle->documento_DP}}</span>
+            </a>
+            @endif
+            {{-- <a href={{url("/download/documento_DP/{$detalle->id}")}}>{{$detalle->documento_DP}}</a> --}}
             </div>
 
             <div>
@@ -131,7 +154,14 @@
             <textarea readonly id="direccion_web_Pl" name="direccion_web_Pl" rows="3" cols="60" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" >{{$detalle->direccion_web_Pl}}</textarea>
             <br>
 
-            <a href={{url("/download/documento_P/{$detalle->id}")}}>{{$detalle->documento_P}}</a>
+            @if ($detalle->documento_P!=="")
+            <a href={{url("/download/documento_P/{$detalle->id}")}} class="icon-block">
+                <i class="fa fa-file-text" style="font-size:48px;color:rgb(0, 21, 255)"></i>
+                <span>{{$detalle->documento_P}}</span>
+            </a>
+            @endif
+
+            {{-- <a href={{url("/download/documento_P/{$detalle->id}")}}>{{$detalle->documento_P}}</a> --}}
 
             </div>
                 </div>
@@ -171,18 +201,26 @@
                 </div>
                 <div>
                     <label for="InputData1">Reporte </label>
-                    <a href={{url("/download/reporte/{$detalle->id}")}}>{{$detalle->reporte}}</a>
-
+                    {{-- <a href={{url("/download/reporte/{$detalle->id}")}}>{{$detalle->reporte}}</a> --}}
+                    @if ($detalle->reporte!=="")
+                    <a href={{url("/download/reporte/{$detalle->id}")}} class="icon-block">
+                        <i class="fa fa-file-text" style="font-size:48px;color:rgb(0, 21, 255)"></i>
+                        <span>{{$detalle->reporte}}</span>
+                    </a>
+                    @endif
 
 
             </div>
 
-            @error('reporte')
-
-
-
-
-            @enderror
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
 
 
 
