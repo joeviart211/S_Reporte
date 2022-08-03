@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use  App\Models\Reporte;
 use  App\Models\Transversalidad;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 
@@ -14,18 +15,27 @@ class ReportController extends Controller
 {
      public function store(Request $request)
     {
+        $mytime = Carbon::now();
+
+       $hoy=$mytime->toDateString();
+
+       $checkdate = date('m-d-Y', strtotime("-3 months", strtotime($hoy)));
+
 
          $request->validate([
-            'documentoDG' => 'mimes:xls,xlsx,doc,pdf',
-            'documento_dd' => 'mimes:xls,xlsx,doc,pdf',
-            'documento_DP' => 'mimes:xls,xlsx,doc,pdf',
-            'documento_P' => 'mimes:xls,xlsx,doc,pdf',
-            'reporte' => 'mimes:xls,xlsx,doc,pdf',
+            'documentoDG' => 'mimes:xls,xlsx,doc,pdf,pptx,ppt,docx',
+            'documento_dd' => 'mimes:xls,xlsx,doc,pdf,pptx,ppt,docx',
+            'documento_DP' => 'mimes:xls,xlsx,doc,pdf,pptx,ppt,docx',
+            'documento_P' => 'mimes:xls,xlsx,doc,pdf,pptx,ppt,docx',
+            'reporte' => 'mimes:pdf',
+
+            'fecha' => 'after:'.$checkdate,
 
 
 
-        ])->return($validatedData);
-        
+
+        ]);
+
 
 
         $reporte = new Reporte;
@@ -82,7 +92,8 @@ class ReportController extends Controller
         $reporte->fuente =$request->fuente;
 
         $reporte->user_id = auth()->user()->id;
-        $date=date("d-m-y", strtotime($request->fecha));
+        $date=date("d-m-Y", strtotime($request->fecha));
+
 
 
         $reporte->fecha=$date;

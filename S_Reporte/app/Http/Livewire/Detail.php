@@ -17,12 +17,20 @@ class Detail extends Component
 
         // $detalles= Reporte::where('id',$ident)->get();
         $detalle = DB::table('reportes')->find($ident);
-        // dd($detalles);
+        $id=$detalle->user_id;
+        $usuario= DB ::table('users')->find($id);
+        if($usuario==null){
+            $user="Usuario no encontrado";
+        }else{
 
+            $user=$usuario->name;
+        }
+        
 
         return view('livewire.Detail',[
             'detalle'=>$detalle,
-            'ident'=>$ident
+            'ident'=>$ident,
+            'user'=>$user
         ]
     );
     }

@@ -29,6 +29,7 @@
                     <label for="InputData1">Fecha</label>
                     <input type="text" id="fecha" name="fecha" class="form-control" required="true" value={{$detalle->fecha}}>
                     <div>
+                        <br>
                         <h1>Tipo</h1>
                     @if ($detalle->tema_selecto==1){
                     <h3>Tema Selecto</h3>
@@ -48,6 +49,9 @@
                     </div>
 
                     <br><br>
+                    <label for="InputData1">Ultima actualización por </label>
+                    <textarea readonly rows="2" cols="30" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" >{{$user}}</textarea>
+
                     </div>
 
                     <div>
@@ -94,11 +98,20 @@
             <br>
 
             @if ($detalle->documentoDG!=="")
+
+
+
+
+            @if ($detalle->documentoDG!==null)
             <a href={{url("/download/documentoDG/{$detalle->id}")}} class="icon-block">
                 <i class="fa fa-file-text" style="font-size:48px;color:rgb(0, 21, 255)"></i>
                 <span>{{$detalle->documentoDG}}</span>
             </a>
+
             @endif
+            @endif
+
+
 
             {{-- <a href={{url("/download/documentoDG/{$detalle->id}")}}>{{$detalle->documentoDG}}</a> --}}
 
@@ -115,11 +128,13 @@
 
 
                 <br>
+                @if ($detalle->documento_dd!==null)
                 @if($detalle->documento_dd!=="")
                 <a href={{url("/download/documento_dd/{$detalle->id}")}} class="icon-block">
                     <i class="fa fa-file-text" style="font-size:48px;color:rgb(0, 21, 255)"></i>
                     <span>{{$detalle->documento_dd}}</span>
                 </a>
+                @endif
                 @endif
                 {{-- <a href={{url("/download/documento_dd/{$detalle->id}")}}>{{$detalle->documento_dd}}</a> --}}
 
@@ -135,11 +150,13 @@
             {{-- <input type="text" id="direccion_web_P" name="direccion_web_P" class="form-control" required="true"> --}}
 
             <br>
+            @if ($detalle->documento_DP!==null)
             @if ($detalle->documento_DP!=="")
             <a href={{url("/download/documento_DP/{$detalle->id}")}} class="icon-block">
                 <i class="fa fa-file-text" style="font-size:48px;color:rgb(0, 21, 255)"></i>
                 <span>{{$detalle->documento_DP}}</span>
             </a>
+            @endif
             @endif
             {{-- <a href={{url("/download/documento_DP/{$detalle->id}")}}>{{$detalle->documento_DP}}</a> --}}
             </div>
@@ -153,12 +170,13 @@
             {{-- <input type="text" id="	direccion_web_Pl" name="direccion_web_Pl" class="form-control" required="true"> --}}
             <textarea readonly id="direccion_web_Pl" name="direccion_web_Pl" rows="3" cols="60" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" >{{$detalle->direccion_web_Pl}}</textarea>
             <br>
-
+            @if ($detalle->documento_P!==null)
             @if ($detalle->documento_P!=="")
             <a href={{url("/download/documento_P/{$detalle->id}")}} class="icon-block">
                 <i class="fa fa-file-text" style="font-size:48px;color:rgb(0, 21, 255)"></i>
                 <span>{{$detalle->documento_P}}</span>
             </a>
+            @endif
             @endif
 
             {{-- <a href={{url("/download/documento_P/{$detalle->id}")}}>{{$detalle->documento_P}}</a> --}}
@@ -202,11 +220,13 @@
                 <div>
                     <label for="InputData1">Reporte </label>
                     {{-- <a href={{url("/download/reporte/{$detalle->id}")}}>{{$detalle->reporte}}</a> --}}
+                    @if ($detalle->reporte!==null)
                     @if ($detalle->reporte!=="")
                     <a href={{url("/download/reporte/{$detalle->id}")}} class="icon-block">
                         <i class="fa fa-file-text" style="font-size:48px;color:rgb(0, 21, 255)"></i>
                         <span>{{$detalle->reporte}}</span>
                     </a>
+                    @endif
                     @endif
 
 

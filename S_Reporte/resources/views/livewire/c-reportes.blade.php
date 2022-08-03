@@ -4,7 +4,36 @@
                     <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Error</h2>
                     <br>
                     @foreach ($errors->all() as $error)
-                        <li>{{   $errors    }}</li>
+                    
+                        @if($error=="The reporte must be a file of type: pdf.")
+                        <li>  El reporte debe de ser un archivo: pdf  </li>
+                        @endif
+
+                        @if($error=="The documento d g must be a file of type: xls, xlsx, doc, pdf, pptx, ppt, docx.")
+                        <li>  El documento de dirección General  debe de ser un archivo: xls,xlsx,doc,pdf,pptx,ppt,docx  </li>
+                        @endif
+
+                        @if($error=="The documento dd must be a file of type: xls, xlsx, doc, pdf, pptx, ppt, docx.")
+                        <li>  El documento de dirección de diagnostico  debe de ser un archivo: xls,xlsx,doc,pdf,pptx,ppt,docx  </li>
+                        @endif
+
+                        @if($error=="")
+                        <li>  El documento de dirección de diagnostico  debe de ser un archivo: xls,xlsx,doc,pdf,pptx,ppt,docx  </li>
+                        @endif
+
+                        @if($error=="The documento p must be a file of type: xls, xlsx, doc, pdf, pptx, ppt, docx.")
+                        <li>  El documento de dirección de planeación debe de ser un archivo: xls,xlsx,doc,pdf,pptx,ppt,docx  </li>
+                        @endif
+
+                        <br>
+                        @php
+                         $fecha = substr($error,0,-11);
+
+                        @endphp
+
+                        @if ($fecha=="The fecha must be a date after ")
+                            <li>La fecha debe de pertenecer a los ultimos 3 meses </li>
+                        @endif
                     @endforeach
                 </ul>
             </div>
@@ -51,9 +80,11 @@
     <textarea id="reseña" name="reseña" rows="5" cols="60" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" ></textarea>
 <br>
 <label for="InputData1">Proceso de validación</label>
-<input type="text" id="proceso_validacion" name="proceso_validacion" class="form-control" required="true">
+<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" name="proceso_validacion">
+    <option value="Por Validar">Por Validar</option>
+    <option value="Implicito">Implicito</option>
 
-
+</select>
 
 
 <br>
@@ -143,6 +174,8 @@
 {{-- cachar error de validación --}}
 
 @enderror
-<button type="submit" class="btn btn-primary">Submit</button>
+<button type="submit"class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+   Subir reporte
+  </button>
 </div>
 </div>

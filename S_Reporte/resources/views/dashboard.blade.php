@@ -3,7 +3,8 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <x-jet-nav-link href="{{ route('ctransver') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Nueva trasnversalidad') }}
-            </x-jet-nav-link>
+            </x-jet-nav-link><br>
+            <a href={{ url()->previous() }}>Regresar</a>
         </h2>
     </x-slot>
 

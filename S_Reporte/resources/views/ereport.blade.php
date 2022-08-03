@@ -16,7 +16,7 @@
         <div>
         <label for="InputData1">Fuente</label>
 
-        <textarea id="fuente" name="fuente rows="5" cols="30" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" >{{$reporte->fuente}}</textarea>
+        <textarea id="fuente" name="fuente"  rows= "5" cols="30" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" >{{$reporte->fuente}}</textarea>
         </div>
         <div>
         <label for="InputData1">Fecha</label>
@@ -185,7 +185,7 @@
     <input type="file" id="reporte" name="reporte" class="form-control" >
 
 
-    
+
 </div>
 
 @error('reporte')
