@@ -17,8 +17,7 @@
                     <input type="date" id="fecha" name="fecha" class="form-control" required="true" value="{{$transversalidad->fecha}}">
 
                     <br>
-                    <label for="InputData1">Eje</label>
-                    <input type="text" id="eje" name="eje" class="form-control" required="true" value="{{$transversalidad->eje}}">
+                    
 
                     <label for="InputData1">Nombre</label>
                     <input type="text" id="nombre" name="nombre" class="form-control" required="true" value="{{$transversalidad->nombre}}"  >

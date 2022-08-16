@@ -55,7 +55,7 @@ return new class extends Migration
             $table->boolean('Comunicado')->nullable()->default(0);
             $table->boolean('Tarjeta_Informativa')->nullable()->default(0);
 
-             $table->foreign('transversalidad')->references('eje')->on('transversalidad')->onUpdate('cascade')->onDelete('set null');
+             $table->foreign('transversalidad')->references('eje')->on('transversalidad');
             // $table->foreign('transversalidad')->references('eje')->on('tranansversalidad');
             $table->foreign('user_id')->references('id')->on('users');
 

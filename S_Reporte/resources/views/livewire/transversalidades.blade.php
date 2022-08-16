@@ -20,8 +20,9 @@
         @foreach($transversalidades as $transversalidad)
 
         <th>
-            {{$transversalidad -> eje}}
+            {{$transversalidad->nombre}}
         </th>
+
 
         <th><a href="{{ route('transversalidad.update',$transversalidad->eje)}}" class="btn btn-primary">Editar</a>
         {{-- cambiar a iconos --}}

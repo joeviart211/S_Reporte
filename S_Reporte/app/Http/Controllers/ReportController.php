@@ -17,9 +17,7 @@ class ReportController extends Controller
     {
         $mytime = Carbon::now();
 
-       $hoy=$mytime->toDateString();
 
-       $checkdate = date('m-d-Y', strtotime("-3 months", strtotime($hoy)));
 
 
          $request->validate([
@@ -29,7 +27,7 @@ class ReportController extends Controller
             'documento_P' => 'mimes:xls,xlsx,doc,pdf,pptx,ppt,docx',
             'reporte' => 'mimes:pdf',
 
-            'fecha' => 'after:'.$checkdate,
+
 
 
 

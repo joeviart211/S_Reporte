@@ -17,7 +17,8 @@ class Reportes extends Component
 
         // $reportes= Reporte::all()->paginate(20);
         return view('livewire.reportes',[
-             'reportes' => DB::table('reportes')->orderBy('id', 'DESC')->paginate(15)
+             'reportes' => DB::table('reportes')->orderBy('id', 'DESC')->paginate(15),
+             'trasnversalidades' => DB::table('transversalidades')
         ]);
     }
 }

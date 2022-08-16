@@ -89,7 +89,7 @@
 
             <a href="{{ route('report.update',$reporte->id)}}">Editar</a>
 
-              <button type="button" class="focus:outline-none openModal text-white text-sm py-2.5 px-1.5 mt-5 mx-2.5  rounded-md bg-red-500 hover:bg-green-600 hover:shadow-lg">Borrar</button>
+
               <!-- This example requires Tailwind CSS v2.0+ -->
               <div class="fixed z-10 inset-0 invisible overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="interestModal">
                   <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">

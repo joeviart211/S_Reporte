@@ -6,11 +6,15 @@
     @endphp
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Regresar') }}
+
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"onClick="self.close()">
+                Cerrar
+              </button>
         </h2>
         <h2>
-            <x-jet-nav-link href="{{ route('detalle.update',$currentURL) }}" :active="request()->routeIs('dashboard')">
-                {{ __('Editar detallce') }}
+
+            <x-jet-nav-link href="{{ route('report.update',$currentURL) }}" :active="request()->routeIs('dashboard')">
+                {{ __('Editar ') }}
             </x-jet-nav-link>
         </h2>
 

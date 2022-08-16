@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Placeholder') }}
+
         </h2>
     </x-slot>
 
@@ -20,6 +20,8 @@
         </div>
         <div>
         <label for="InputData1">Fecha</label>
+    
+
         <input type="text" id="fecha" name="fecha" class="form-control" required="true" value={{$reporte->fecha}}>
         @if ($reporte->tema_selecto==1)
         <input type="checkbox" name="tema_selecto" value="1" checked>Tema Selecto </b>

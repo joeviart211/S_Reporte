@@ -17,8 +17,7 @@
                     <label for="InputData1">Eje</label>
                     <input type="text" id="eje" name="eje" class="form-control" required="true">
 
-                    <label for="InputData1">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control" required="true">
+                   
 
                         <br>
                         <textarea id="justificacion" name="justificacion" rows="5" cols="30" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block  sm:text-sm border border-gray-300 rounded-md" ></textarea>

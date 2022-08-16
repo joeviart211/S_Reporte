@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('eje')->primary()->nullable();
             $table->text('nombre');
             $table->date('fecha');
-            $table->text('justificacion');
+            $table->text('justificacion')->nullable();
 
 
             $table->timestamps();
